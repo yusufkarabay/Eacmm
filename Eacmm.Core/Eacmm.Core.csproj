@@ -7,11 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
-    <Folder Include="Entities\" />
+    <Folder Include="DTOs\EmployeeDtos\" />
+    <Folder Include="DTOs\AuthorityDto\" />
+    <Folder Include="DTOs\CabinetDto\" />
+    <Folder Include="DTOs\DepartmentDto\" />
+    <Folder Include="DTOs\FuelDto\" />
+    <Folder Include="DTOs\InventoryDto\" />
+    <Folder Include="DTOs\MaintenanceDto\" />
+    <Folder Include="DTOs\SentryDto\" />
+    <Folder Include="DTOs\RequestDto\" />
     <Folder Include="StaticResources\" />
-    <Folder Include="Services\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>

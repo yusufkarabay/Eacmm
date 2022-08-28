@@ -8,7 +8,14 @@
 
   <ItemGroup>
     <Folder Include="Mapping\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Eacmm.Core\Eacmm.Core.csproj" />
   </ItemGroup>
 
 </Project>
