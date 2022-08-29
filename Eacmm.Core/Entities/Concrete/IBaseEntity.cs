@@ -8,10 +8,14 @@ namespace Eacmm.Core.Entities.Concrete
 {
     public interface IBaseEntity
     {
+       
         Guid Id { get; set; }
-        DateTime CreatedDate { get; set; }
-        DateTime? UpdatedDate { get; set; }
-        bool Deleted { get; set; }
-        bool Enabled { get; set; }
+        DateTime CreatedAt { get; set; }
+        DateTime? LastModifiedAt { get; set; }
+        string CreatedBy { get; set; }
+        string LastModifiedBy { get; set; }
+        bool IsEnabled { get; set; }
+        bool IsDeleted { get; set; }
+        long Version { get; set; }
     }
 }
