@@ -23,18 +23,31 @@ namespace Eacmm.Core.Entities.Abstract
 
         [JsonIgnore]
         [IgnoreDataMember]
-        public virtual List<Cabinet> Cabinets { get; set; } = new List<Cabinet>();
+        public virtual List<Cabinet>? Cabinets { get; set; } = new List<Cabinet>();
+
+        [JsonIgnore]
+        [IgnoreDataMember]
+        public virtual List<EntranceCard>? EntranceCards { get; set; } = new List<EntranceCard>();
 
 
         [JsonIgnore]
         [IgnoreDataMember]
-        public virtual List<Drawer> Drawers { get; set; } = new List<Drawer>();
+        public virtual List<GuestCard>? GuestCards { get; set; } = new List<GuestCard>();
 
 
         [JsonIgnore]
         [IgnoreDataMember]
-        public virtual List<Department> Departments { get; set; } = new List<Department>();
+        public virtual List<Headset>? Headsets { get; set; } = new List<Headset>();
 
+        [JsonIgnore]
+        [IgnoreDataMember]
+        public virtual List<Drawer>? Drawers { get; set; } = new List<Drawer>();
+
+
+        public Guid DepartmentId { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        public Department Department { set; get; }
 
     }
 }

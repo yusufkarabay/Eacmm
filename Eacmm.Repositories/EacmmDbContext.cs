@@ -39,6 +39,53 @@ namespace Eacmm.Repositories
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
+            modelBuilder.Entity<Cabinet>()
+                .HasOne(c => c.Employee)
+                .WithMany(e => e.Cabinets)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Drawer>()
+                .HasOne(c => c.Employee)
+                .WithMany(e => e.Drawers)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<EntranceCard>()
+                .HasOne(c => c.Employee)
+                .WithMany(e => e.EntranceCards)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Employee>()
+                .HasOne(c => c.Department)
+                .WithMany(e => e.Employees)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<GuestCard>()
+                .HasOne(c => c.Employee)
+                .WithMany(e => e.GuestCards)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Headset>()
+                .HasOne(c => c.Employee)
+                .WithMany(e => e.Headsets)
+                .OnDelete(DeleteBehavior.NoAction);
+
+
+            modelBuilder.Entity<Headset>()
+                .HasOne(c => c.Employee)
+                .WithMany(e => e.Headsets)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<SentryToDo>()
+               .HasOne(c => c.Department)
+               .WithMany(e => e.SentryToDos)
+               .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<SentryDone>()
+                .HasOne(c => c.Department)
+                .WithMany(e => e.SentryDones)
+                .OnDelete(DeleteBehavior.NoAction);
+
+
         }
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
