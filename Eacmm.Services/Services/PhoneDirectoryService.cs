@@ -16,12 +16,11 @@ namespace Eacmm.Services.Services
         private readonly IUnitofWork _unitofWork;
         private readonly IPhoneDirectoryRepository _phoneDirectoryRepository;
 
-        public PhoneDirectoryService(IPhoneDirectoryService phoneDirectoryService, IUnitofWork unitofWork, IPhoneDirectoryRepository phoneDirectoryRepository, IMapper mapper)
+        public PhoneDirectoryService(IMapper mapper, IUnitofWork unitofWork, IPhoneDirectoryRepository phoneDirectoryRepository)
         {
-
+            _mapper=mapper;
             _unitofWork=unitofWork;
             _phoneDirectoryRepository=phoneDirectoryRepository;
-            _mapper=mapper;
         }
     }
 }
