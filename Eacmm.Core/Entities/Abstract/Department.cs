@@ -11,6 +11,8 @@ namespace Eacmm.Core.Entities.Abstract
     public class Department : BaseEntity
     {
         public string Name { get; set; }
+
+
         [JsonIgnore]
         [IgnoreDataMember]
         public virtual List<Employee> Employees { get; set; } = new List<Employee>();

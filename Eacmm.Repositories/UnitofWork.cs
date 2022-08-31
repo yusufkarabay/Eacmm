@@ -10,8 +10,8 @@ namespace Eacmm.Repositories
 {
     public class UnitofWork:IUnitofWork
     {
-        private readonly EacmmDbContext _eacmmDbContext;
-        public UnitofWork(EacmmDbContext eacmmDbContext)
+        private readonly EacmmDBContext _eacmmDbContext;
+        public UnitofWork(EacmmDBContext eacmmDbContext)
         {
             _eacmmDbContext=eacmmDbContext; 
         }

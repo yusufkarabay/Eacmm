@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class GuestCardRepository : GenericRepository<GuestCard>, IGuestCardRepository
     {
-        public GuestCardRepository(EacmmDbContext dbContext) : base(dbContext)
+        public GuestCardRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }

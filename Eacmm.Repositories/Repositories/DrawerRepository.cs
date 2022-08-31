@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class DrawerRepository : GenericRepository<Drawer>, IDrawerRepository
     {
-        public DrawerRepository(EacmmDbContext dbContext) : base(dbContext)
+        public DrawerRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }

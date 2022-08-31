@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class InventoryRepository : GenericRepository<Inventory>, IInventoryRepository
     {
-        public InventoryRepository(EacmmDbContext dbContext) : base(dbContext)
+        public InventoryRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }

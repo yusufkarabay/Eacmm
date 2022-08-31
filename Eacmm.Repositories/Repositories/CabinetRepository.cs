@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class CabinetRepository : GenericRepository<Cabinet>, ICabinetRepository
     {
-        public CabinetRepository(EacmmDbContext dbContext) : base(dbContext)
+        public CabinetRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }

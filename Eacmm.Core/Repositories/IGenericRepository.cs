@@ -13,9 +13,10 @@ namespace Eacmm.Core.Repositories
         IQueryable<T> GetAll();
         IQueryable<T> Where(Expression<Func<T, bool>> expression);
         Task AddAsync(T entity);
-        void Update(T entity);
-        void Delete(T entity);
-       
+        Task UpdateAsync(T entity);
+        Task DeleteAsync(T entity);
+        Task<bool> ExistsAsync(Guid id);
+        Task<List<T>> GetByIdListAsync(Guid id);
 
     }
 }

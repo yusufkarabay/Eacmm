@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 
 namespace Eacmm.Repositories
 {
-    public class EacmmDbContext : DbContext
+    public class EacmmDBContext:DbContext
     {
-        public EacmmDbContext(DbContextOptions<EacmmDbContext> dbContextOptions) : base(dbContextOptions)
+        public EacmmDBContext(DbContextOptions<EacmmDBContext> dbContextOptions): base(dbContextOptions)
         {
 
         }
+        
         public DbSet<Cabinet> Cabinets { get; set; }
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<Department> Departments { get; set; }
@@ -39,41 +40,38 @@ namespace Eacmm.Repositories
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            modelBuilder.Entity<Cabinet>()
-                .HasOne(c => c.Employee)
-                .WithMany(e => e.Cabinets)
-                .OnDelete(DeleteBehavior.NoAction);
+            //modelBuilder.Entity<Cabinet>()
+            //    .HasOne(c => c.Employee)
+            //    .WithMany(e => e.Cabinets)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Drawer>()
-                .HasOne(c => c.Employee)
-                .WithMany(e => e.Drawers)
-                .OnDelete(DeleteBehavior.NoAction);
+            //modelBuilder.Entity<Drawer>()
+            //    .HasOne(c => c.Employee)
+            //    .WithMany(e => e.Drawers)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<EntranceCard>()
-                .HasOne(c => c.Employee)
-                .WithMany(e => e.EntranceCards)
-                .OnDelete(DeleteBehavior.NoAction);
+            //modelBuilder.Entity<EntranceCard>()
+            //    .HasOne(c => c.Employee)
+            //    .WithMany(e => e.EntranceCards)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Employee>()
                 .HasOne(c => c.Department)
                 .WithMany(e => e.Employees)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<GuestCard>()
-                .HasOne(c => c.Employee)
-                .WithMany(e => e.GuestCards)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<Headset>()
-                .HasOne(c => c.Employee)
-                .WithMany(e => e.Headsets)
-                .OnDelete(DeleteBehavior.NoAction);
+            //modelBuilder.Entity<GuestCard>()
+            //    .HasOne(c => c.Employee)
+            //    .WithMany(e => e.GuestCards)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
 
-            modelBuilder.Entity<Headset>()
-                .HasOne(c => c.Employee)
-                .WithMany(e => e.Headsets)
-                .OnDelete(DeleteBehavior.NoAction);
+
+
+            //modelBuilder.Entity<Headset>()
+            //    .HasOne(c => c.Employee)
+            //    .WithMany(e => e.Headsets)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<SentryToDo>()
                .HasOne(c => c.Department)
@@ -99,5 +97,5 @@ namespace Eacmm.Repositories
             return await base.SaveChangesAsync(cancellationToken);
         }
     }
-
 }
+

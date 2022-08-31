@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class GeneratorUsedTimeRepository : GenericRepository<GeneratorUsedTime>, IGeneratorUsedTimeRepository
     {
-        public GeneratorUsedTimeRepository(EacmmDbContext dbContext) : base(dbContext)
+        public GeneratorUsedTimeRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }

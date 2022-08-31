@@ -9,14 +9,11 @@ using System.Threading.Tasks;
 
 namespace Eacmm.Core.Entities.Abstract
 {
-    public class Drawer : BaseEntity, IGiveAndTake
+    public class Drawer : BaseEntity, IGiveAndTake, ISpecialNo
     {
         public string SpecialNo { get; set; }
-        public string DeliveryEmployee { get; set; }
-        public string ReceiverEmployee { get; set; }
-        public Guid EmployeeId { get; set; }
-        [JsonIgnore]
-        [IgnoreDataMember]
-        public Employee Employee { set; get; }
+        public Guid? DeliveryEmployeeId { get; set; }
+        public Guid? ReceiverEmployeeId { get; set; }
+
     }
 }

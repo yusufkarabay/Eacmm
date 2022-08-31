@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Eacmm.Core.DTOs.CabinetDto;
+using Eacmm.Core.Entities.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,9 @@ namespace Eacmm.Services.Mapping
     {
         public MapProfile()
         {
-
+            //**************************************************************************
+            CreateMap<Cabinet, CreateCabinetDto>().ReverseMap();   
+            CreateMap<Cabinet, DeliverCabinetDto>().ReverseMap();
         }
     }
 }

@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="DTOs\EmployeeDtos\" />
     <Folder Include="DTOs\AuthorityDto\" />
-    <Folder Include="DTOs\CabinetDto\" />
     <Folder Include="DTOs\DepartmentDto\" />
     <Folder Include="DTOs\FuelDto\" />
     <Folder Include="DTOs\InventoryDto\" />

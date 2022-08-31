@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Eacmm.Core\Eacmm.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

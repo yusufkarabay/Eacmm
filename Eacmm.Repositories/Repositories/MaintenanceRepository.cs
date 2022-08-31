@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class MaintenanceRepository : GenericRepository<Maintenance>, IMaintenanceRepository
     {
-        public MaintenanceRepository(EacmmDbContext dbContext) : base(dbContext)
+        public MaintenanceRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }

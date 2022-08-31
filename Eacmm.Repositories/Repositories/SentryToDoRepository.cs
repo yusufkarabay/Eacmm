@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class SentryToDoRepository : GenericRepository<SentryToDo>, ISentryToDoRepository
     {
-        public SentryToDoRepository(EacmmDbContext dbContext) : base(dbContext)
+        public SentryToDoRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }
