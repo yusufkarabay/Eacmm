@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class ContractRepository : GenericRepository<Contract>, IContractRepository
     {
-        public ContractRepository(EacmmDbContext dbContext) : base(dbContext)
+        public ContractRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }

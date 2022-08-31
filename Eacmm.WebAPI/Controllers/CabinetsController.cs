@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Eacmm.Core;
+using Eacmm.Core.DTOs.CabinetDto;
+using Eacmm.Core.Entities.Abstract;
 using Eacmm.Core.Repositories;
 using Eacmm.Core.Services;
 using Microsoft.AspNetCore.Http;
@@ -23,5 +25,44 @@ namespace Eacmm.WebAPI.Controllers
             _cabinetService=cabinetService;
             _cabinetRepository=cabinetRepository;
         }
+
+        /// <summary>
+        /// Create Cabinet
+        /// </summary>
+        /// <param name="createCabinetDto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> CreateBranch([FromBody] CreateCabinetDto createCabinetDto)
+        {
+
+            await _cabinetService.CreateCabinet(_mapper.Map<Cabinet>(createCabinetDto));
+            await _unitofWork.SaveChangesAsync();
+            return Created("Added", createCabinetDto);
+        }
+
+
+
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> CabinetDeliver(Guid id, [FromBody] DeliverCabinetDto deliverCabinetDto)
+        {
+            var isCabinetExists = await _cabinetRepository.ExistsAsync(id);
+            if (!isCabinetExists)
+            {
+                return NotFound();
+            }
+
+            var mappedCabinet = _mapper.Map<Cabinet>(deliverCabinetDto);
+            mappedCabinet.Id = id;
+
+            (bool hasError, Exception? exception) = await _cabinetService.CabinetDeliver(id, mappedCabinet);
+            if (hasError)
+            {
+                return Problem(exception.Message);
+            }
+
+            return Ok();
+        }
+
     }
 }

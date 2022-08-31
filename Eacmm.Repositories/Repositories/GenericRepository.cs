@@ -12,20 +12,21 @@ namespace Eacmm.Repositories.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
-        protected readonly EacmmDbContext _dbContext;
+        protected readonly EacmmDBContext _dbContext;
         protected virtual IQueryable<T> _dbset => _dbContext.Set<T>().AsNoTracking();
-        public GenericRepository(EacmmDbContext dbContext)
+        public GenericRepository(EacmmDBContext dbContext)
         {
             _dbContext=dbContext;
         }
     
-        public Task AddAsync(T entity)
+        public async Task AddAsync(T entity)
         {
-            throw new NotImplementedException();
+           await _dbContext.AddAsync(entity);
         }
 
         public void Delete(T entity)
         {
+            
             throw new NotImplementedException();
         }
 
@@ -36,17 +37,68 @@ namespace Eacmm.Repositories.Repositories
 
         public Task<T> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return _dbset.Where(x => x.Id==id).FirstOrDefaultAsync();
         }
 
-        public void Update(T entity)
+        public async Task Update(T entity)
         {
-            throw new NotImplementedException();
+
+            entity.LastModifiedAt = DateTime.UtcNow;
+
+            var notUpdateCreatedAt = await GetByIdAsync(entity.Id);
+
+            entity.CreatedAt=notUpdateCreatedAt.CreatedAt;
+            try
+            {
+                _dbContext.Entry(entity).State = EntityState.Modified;
+            }
+            catch (InvalidOperationException iex)
+            {
+                if (!iex.Message.Contains("already being tracked"))
+                {
+                    throw;
+                }
+            }
         }
 
         public IQueryable<T> Where(Expression<Func<T, bool>> expression)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task UpdateAsync(T entity)
+        {
+            entity.LastModifiedAt = DateTime.UtcNow;
+
+            var notUpdateCreatedAt = await GetByIdAsync(entity.Id);
+
+            entity.CreatedAt=notUpdateCreatedAt.CreatedAt;
+            try
+            {
+                _dbContext.Entry(entity).State = EntityState.Modified;
+            }
+            catch (InvalidOperationException iex)
+            {
+                if (!iex.Message.Contains("already being tracked"))
+                {
+                    throw;
+                }
+            }
+        }
+
+        public Task DeleteAsync(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> ExistsAsync(Guid id)
+        {
+            return _dbset.Where(m => m.Id == id).FirstOrDefault() != null;
+        }
+
+        public async Task<List<T>> GetByIdListAsync(Guid id)
+        {
+           return await _dbset.Where(m => m.Id == id).ToListAsync();    
         }
     }
 }

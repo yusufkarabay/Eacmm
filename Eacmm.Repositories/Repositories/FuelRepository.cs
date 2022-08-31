@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class FuelRepository : GenericRepository<Fuel>, IFuelRepository
     {
-        public FuelRepository(EacmmDbContext dbContext) : base(dbContext)
+        public FuelRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }

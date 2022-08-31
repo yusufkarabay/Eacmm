@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class DepartmentRepository : GenericRepository<Department>, IDepartmentRepository
     {
-        public DepartmentRepository(EacmmDbContext dbContext) : base(dbContext)
+        public DepartmentRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }

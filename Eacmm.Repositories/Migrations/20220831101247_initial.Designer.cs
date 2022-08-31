@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Eacmm.Repositories.Migrations
 {
-    [DbContext(typeof(EacmmDbContext))]
-    [Migration("20220829124918_some realtionship added")]
-    partial class somerealtionshipadded
+    [DbContext(typeof(EacmmDBContext))]
+    [Migration("20220831101247_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,10 +38,9 @@ namespace Eacmm.Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DeliveryEmployee")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("EmployeeId")
+                    b.Property<Guid?>("EmployeeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
@@ -58,7 +57,6 @@ namespace Eacmm.Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ReceiverEmployee")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SpecialNo")
@@ -151,9 +149,6 @@ namespace Eacmm.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("EmployeeId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -177,8 +172,6 @@ namespace Eacmm.Repositories.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
-
                     b.ToTable("Departments");
                 });
 
@@ -196,10 +189,9 @@ namespace Eacmm.Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DeliveryEmployee")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("EmployeeId")
+                    b.Property<Guid?>("EmployeeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
@@ -216,7 +208,6 @@ namespace Eacmm.Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ReceiverEmployee")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SpecialNo")
@@ -252,6 +243,9 @@ namespace Eacmm.Repositories.Migrations
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("DepartmentId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -296,6 +290,8 @@ namespace Eacmm.Repositories.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DepartmentId");
+
                     b.ToTable("Employees");
                 });
 
@@ -313,10 +309,9 @@ namespace Eacmm.Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DeliveryEmployee")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("EmployeeId")
+                    b.Property<Guid?>("EmployeeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
@@ -333,7 +328,6 @@ namespace Eacmm.Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ReceiverEmployee")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SpecialNo")
@@ -446,10 +440,9 @@ namespace Eacmm.Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DeliveryEmployee")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("EmployeeId")
+                    b.Property<Guid?>("EmployeeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
@@ -466,7 +459,6 @@ namespace Eacmm.Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ReceiverEmployee")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SpecialNo")
@@ -498,10 +490,9 @@ namespace Eacmm.Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DeliveryEmployee")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("EmployeeId")
+                    b.Property<Guid?>("EmployeeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
@@ -518,7 +509,6 @@ namespace Eacmm.Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ReceiverEmployee")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SpecialNo")
@@ -552,9 +542,8 @@ namespace Eacmm.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CreatedEmployee")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("DepartmentId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Info")
                         .HasColumnType("nvarchar(max)");
@@ -585,6 +574,8 @@ namespace Eacmm.Repositories.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
 
                     b.ToTable("Inventories");
                 });
@@ -807,9 +798,8 @@ namespace Eacmm.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CreatedEmployee")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("DepartmentId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Done")
                         .IsRequired()
@@ -834,6 +824,8 @@ namespace Eacmm.Repositories.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DepartmentId");
+
                     b.ToTable("SentryDones");
                 });
 
@@ -850,9 +842,8 @@ namespace Eacmm.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CreatedEmployee")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("DepartmentId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -877,78 +868,112 @@ namespace Eacmm.Repositories.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DepartmentId");
+
                     b.ToTable("SentryToDos");
                 });
 
             modelBuilder.Entity("Eacmm.Core.Entities.Abstract.Cabinet", b =>
                 {
-                    b.HasOne("Eacmm.Core.Entities.Abstract.Employee", "Employee")
-                        .WithMany("Cabinets")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
-                });
-
-            modelBuilder.Entity("Eacmm.Core.Entities.Abstract.Department", b =>
-                {
                     b.HasOne("Eacmm.Core.Entities.Abstract.Employee", null)
-                        .WithMany("Departments")
+                        .WithMany("Cabinets")
                         .HasForeignKey("EmployeeId");
                 });
 
             modelBuilder.Entity("Eacmm.Core.Entities.Abstract.Drawer", b =>
                 {
-                    b.HasOne("Eacmm.Core.Entities.Abstract.Employee", "Employee")
+                    b.HasOne("Eacmm.Core.Entities.Abstract.Employee", null)
                         .WithMany("Drawers")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("EmployeeId");
+                });
+
+            modelBuilder.Entity("Eacmm.Core.Entities.Abstract.Employee", b =>
+                {
+                    b.HasOne("Eacmm.Core.Entities.Abstract.Department", "Department")
+                        .WithMany("Employees")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("Employee");
+                    b.Navigation("Department");
                 });
 
             modelBuilder.Entity("Eacmm.Core.Entities.Abstract.EntranceCard", b =>
                 {
-                    b.HasOne("Eacmm.Core.Entities.Abstract.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
+                    b.HasOne("Eacmm.Core.Entities.Abstract.Employee", null)
+                        .WithMany("EntranceCards")
+                        .HasForeignKey("EmployeeId");
                 });
 
             modelBuilder.Entity("Eacmm.Core.Entities.Abstract.GuestCard", b =>
                 {
-                    b.HasOne("Eacmm.Core.Entities.Abstract.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
+                    b.HasOne("Eacmm.Core.Entities.Abstract.Employee", null)
+                        .WithMany("GuestCards")
+                        .HasForeignKey("EmployeeId");
                 });
 
             modelBuilder.Entity("Eacmm.Core.Entities.Abstract.Headset", b =>
                 {
-                    b.HasOne("Eacmm.Core.Entities.Abstract.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
+                    b.HasOne("Eacmm.Core.Entities.Abstract.Employee", null)
+                        .WithMany("Headsets")
+                        .HasForeignKey("EmployeeId");
+                });
+
+            modelBuilder.Entity("Eacmm.Core.Entities.Abstract.Inventory", b =>
+                {
+                    b.HasOne("Eacmm.Core.Entities.Abstract.Department", "Department")
+                        .WithMany("Inventories")
+                        .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Employee");
+                    b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("Eacmm.Core.Entities.Abstract.SentryDone", b =>
+                {
+                    b.HasOne("Eacmm.Core.Entities.Abstract.Department", "Department")
+                        .WithMany("SentryDones")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("Eacmm.Core.Entities.Abstract.SentryToDo", b =>
+                {
+                    b.HasOne("Eacmm.Core.Entities.Abstract.Department", "Department")
+                        .WithMany("SentryToDos")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("Eacmm.Core.Entities.Abstract.Department", b =>
+                {
+                    b.Navigation("Employees");
+
+                    b.Navigation("Inventories");
+
+                    b.Navigation("SentryDones");
+
+                    b.Navigation("SentryToDos");
                 });
 
             modelBuilder.Entity("Eacmm.Core.Entities.Abstract.Employee", b =>
                 {
                     b.Navigation("Cabinets");
 
-                    b.Navigation("Departments");
-
                     b.Navigation("Drawers");
+
+                    b.Navigation("EntranceCards");
+
+                    b.Navigation("GuestCards");
+
+                    b.Navigation("Headsets");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class RequestRepository : GenericRepository<Request>, IRequestRepository
     {
-        public RequestRepository(EacmmDbContext dbContext) : base(dbContext)
+        public RequestRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }

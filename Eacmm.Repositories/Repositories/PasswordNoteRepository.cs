@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class PasswordNoteRepository : GenericRepository<PasswordNote>, IPasswordNoteRepository
     {
-        public PasswordNoteRepository(EacmmDbContext dbContext) : base(dbContext)
+        public PasswordNoteRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }

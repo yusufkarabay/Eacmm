@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class EntranceCardRepository : GenericRepository<EntranceCard>, IEntranceCardRepository
     {
-        public EntranceCardRepository(EacmmDbContext dbContext) : base(dbContext)
+        public EntranceCardRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }

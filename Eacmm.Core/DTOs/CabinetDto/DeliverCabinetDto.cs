@@ -2,18 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Eacmm.Core.Entities.Abstract
+namespace Eacmm.Core.DTOs.CabinetDto
 {
-    public class Headset : BaseEntity, IGiveAndTake, ISpecialNo 
+    public class DeliverCabinetDto : IGiveAndTake
     {
-        public string SpecialNo { get ; set ; }
+      
         public Guid? DeliveryEmployeeId { get; set; }
         public Guid? ReceiverEmployeeId { get; set; }
-
     }
 }

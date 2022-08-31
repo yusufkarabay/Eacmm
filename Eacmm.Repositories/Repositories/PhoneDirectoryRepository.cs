@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class PhoneDirectoryRepository : GenericRepository<PhoneDirectory>, IPhoneDirectoryRepository
     {
-        public PhoneDirectoryRepository(EacmmDbContext dbContext) : base(dbContext)
+        public PhoneDirectoryRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }

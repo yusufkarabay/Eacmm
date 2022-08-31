@@ -10,7 +10,7 @@ namespace Eacmm.Repositories.Repositories
 {
     public class HeadSetRepository : GenericRepository<Headset>, IHeadsetRepository
     {
-        public HeadSetRepository(EacmmDbContext dbContext) : base(dbContext)
+        public HeadSetRepository(EacmmDBContext dbContext) : base(dbContext)
         {
         }
     }
