@@ -17,8 +17,11 @@ namespace Eacmm.Core.Entities.Abstract
         public string? Adress { get; set; }
         public string? PhoneNumber { get; set; }
         public string? Mail { get; set; } 
-        public bool IsUser { get; set; } = false;
-        public bool IsAdmin { get; set; } = false;
+
+
+
+        //public bool IsUser { get; set; } = false;
+        //public bool IsAdmin { get; set; } = false;
 
 
         //[JsonIgnore]
