@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Eacmm.Core.DTOs.AuthDto;
 using Eacmm.Core.DTOs.CabinetDto;
 using Eacmm.Core.Entities.Abstract;
 using System;
@@ -16,6 +17,7 @@ namespace Eacmm.Services.Mapping
             //**************************************************************************
             CreateMap<Cabinet, CreateCabinetDto>().ReverseMap();   
             CreateMap<Cabinet, DeliverCabinetDto>().ReverseMap();
+            CreateMap<UserDto, User>().ReverseMap();
         }
     }
 }
