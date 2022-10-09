@@ -1,4 +1,6 @@
 ﻿using Eacmm.Core.Entities.Abstract;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Eacmm.Repositories
 {
-    public class EacmmDBContext:DbContext
+    public class EacmmDBContext: IdentityDbContext<User, IdentityRole, string>
     {
         public EacmmDBContext(DbContextOptions<EacmmDBContext> dbContextOptions): base(dbContextOptions)
         {
@@ -33,6 +35,9 @@ namespace Eacmm.Repositories
         public DbSet<Request> Requests { get; set; }
         public DbSet<SentryDone> SentryDones { get; set; }
         public DbSet<SentryToDo> SentryToDos { get; set; }
+        //********************************************************************************
+        public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

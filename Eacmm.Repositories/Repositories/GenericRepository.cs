@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Eacmm.Repositories.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly EacmmDBContext _dbContext;
         protected virtual IQueryable<T> _dbset => _dbContext.Set<T>().AsNoTracking();
@@ -37,28 +37,30 @@ namespace Eacmm.Repositories.Repositories
 
         public Task<T> GetByIdAsync(Guid id)
         {
-            return _dbset.Where(x => x.Id==id).FirstOrDefaultAsync();
+            // return _dbset.Where(x => x.Id==id).FirstOrDefaultAsync();
+            throw new NotImplementedException();
         }
 
         public async Task Update(T entity)
         {
 
-            entity.LastModifiedAt = DateTime.UtcNow;
+            //entity.LastModifiedAt = DateTime.UtcNow;
 
-            var notUpdateCreatedAt = await GetByIdAsync(entity.Id);
+            //var notUpdateCreatedAt = await GetByIdAsync(entity.Id);
 
-            entity.CreatedAt=notUpdateCreatedAt.CreatedAt;
-            try
-            {
-                _dbContext.Entry(entity).State = EntityState.Modified;
-            }
-            catch (InvalidOperationException iex)
-            {
-                if (!iex.Message.Contains("already being tracked"))
-                {
-                    throw;
-                }
-            }
+            //entity.CreatedAt=notUpdateCreatedAt.CreatedAt;
+            //try
+            //{
+            //    _dbContext.Entry(entity).State = EntityState.Modified;
+            //}
+            //catch (InvalidOperationException iex)
+            //{
+            //    if (!iex.Message.Contains("already being tracked"))
+            //    {
+            //        throw;
+            //    }
+            //}
+            throw new NotImplementedException();
         }
 
         public IQueryable<T> Where(Expression<Func<T, bool>> expression)
@@ -68,22 +70,24 @@ namespace Eacmm.Repositories.Repositories
 
         public async Task UpdateAsync(T entity)
         {
-            entity.LastModifiedAt = DateTime.UtcNow;
+            //entity.LastModifiedAt = DateTime.UtcNow;
 
-            var notUpdateCreatedAt = await GetByIdAsync(entity.Id);
+            //var notUpdateCreatedAt = await GetByIdAsync(entity.Id);
 
-            entity.CreatedAt=notUpdateCreatedAt.CreatedAt;
-            try
-            {
-                _dbContext.Entry(entity).State = EntityState.Modified;
-            }
-            catch (InvalidOperationException iex)
-            {
-                if (!iex.Message.Contains("already being tracked"))
-                {
-                    throw;
-                }
-            }
+            //entity.CreatedAt=notUpdateCreatedAt.CreatedAt;
+            //try
+            //{
+            //    _dbContext.Entry(entity).State = EntityState.Modified;
+            //}
+            //catch (InvalidOperationException iex)
+            //{
+            //    if (!iex.Message.Contains("already being tracked"))
+            //    {
+            //        throw;
+            //    }
+            //}
+
+            throw new NotImplementedException();
         }
 
         public Task DeleteAsync(T entity)
@@ -93,12 +97,14 @@ namespace Eacmm.Repositories.Repositories
 
         public async Task<bool> ExistsAsync(Guid id)
         {
-            return _dbset.Where(m => m.Id == id).FirstOrDefault() != null;
+            //  return _dbset.Where(m => m.Id == id).FirstOrDefault() != null;
+            throw new NotImplementedException();
         }
 
         public async Task<List<T>> GetByIdListAsync(Guid id)
         {
-           return await _dbset.Where(m => m.Id == id).ToListAsync();    
+            // return await _dbset.Where(m => m.Id == id).ToListAsync();    
+            throw new NotImplementedException();
         }
     }
 }

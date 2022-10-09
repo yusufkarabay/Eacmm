@@ -1,6 +1,8 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Eacmm.Core;
+using Eacmm.Core.Configuration;
+using Eacmm.Core.Entities.Abstract;
 using Eacmm.Core.Repositories;
 using Eacmm.Core.Services;
 using Eacmm.Repositories;
@@ -8,6 +10,7 @@ using Eacmm.Repositories.Repositories;
 using Eacmm.Services.Mapping;
 using Eacmm.Services.Services;
 using Eacmm.WebAPI.Modules;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -36,6 +39,24 @@ builder.Services.AddDbContext<EacmmDBContext>(x =>
         option.MigrationsAssembly(Assembly.GetAssembly(typeof(EacmmDBContext)).GetName().Name);
     });
 });
+
+
+//**********************************************************************************************************
+builder.Services.Configure<CustomTokenOption>(builder.Configuration.GetSection("TokenOption"));
+builder.Services.Configure<List<Client>>(builder.Configuration.GetSection("Clients"));
+//**********************************************************************************************************
+
+
+//bu kýsýmda þifrenin tipini belirleyebilirsin. rakam olsun. büyük küçük olsun gibi
+//bu kýsmýn detayý identiy kursunda var!!!!
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+    options.User.RequireUniqueEmail=true;
+    options.Password.RequireUppercase=true;
+    options.Password.RequiredLength=8;
+    options.Password.RequireLowercase=true;
+}).AddEntityFrameworkStores<EacmmDBContext>().AddDefaultTokenProviders();
+
 
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
